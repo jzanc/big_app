@@ -19,6 +19,8 @@ describe "User pages" do
     it { should have_title(full_title('Sign up')) }
   end
 
+
+
   describe "signup" do
 
     before { visit signup_path }
@@ -61,6 +63,8 @@ describe "User pages" do
       end
     end
   end
+
+
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
     before do
@@ -97,5 +101,9 @@ describe "User pages" do
       specify { expect(user.reload.name).to  eq new_name }
       specify { expect(user.reload.email).to eq new_email }
     end
+
   end
+
+
 end
+

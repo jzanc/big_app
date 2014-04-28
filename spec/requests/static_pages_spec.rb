@@ -9,6 +9,7 @@ describe "Static pages" do
     it { should have_title(full_title(page_title)) }
   end
 
+
   describe "Home page" do
     before { visit root_path }
     let(:heading)    { 'Big App' }
@@ -57,5 +58,7 @@ describe "Static pages" do
     click_link "Big App"
     expect(page).to have_title('')
   end
+
+  
 end
 

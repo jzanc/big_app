@@ -9,6 +9,7 @@ describe User do
 
   subject { @user }
 
+
   it { should respond_to(:name) }
   it { should respond_to(:email) }
   it { should respond_to(:password_digest) }
@@ -23,6 +24,7 @@ describe User do
     before { @user.name = " " }
     it { should_not be_valid }
   end
+
 
   describe "when email is not present" do
     before { @user.email = " " }
@@ -74,6 +76,8 @@ describe User do
     it { should_not be_valid }
   end
 
+
+
   describe "when password doesn't match confirmation" do
     before { @user.password_confirmation = "mismatch" }
     it { should_not be_valid }
@@ -100,6 +104,8 @@ describe User do
       specify { expect(user_for_invalid_password).to be_false }
     end
   end
+
+  
   describe "email address with mixed case" do
     let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
 
@@ -110,9 +116,12 @@ describe User do
     end
   end
 
+
  describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
   end
 end
+
+
 

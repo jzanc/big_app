@@ -10,5 +10,5 @@ describe "Group Pages" do
     it { should have_content('Create Group') }
     it { should have_title(full_title('Create Group')) }
   end  
-end
 
+end

@@ -19,6 +19,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @micropost = Micropost.new(group: @group, params[:micropost])
     @microposts = @group.microposts.paginate(page: params[:page])
   end
 

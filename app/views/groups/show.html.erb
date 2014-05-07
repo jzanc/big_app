@@ -2,6 +2,19 @@
 <h1>
 <%= @group.name %>, <%= @group.url %>
 </h1>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/micropost_form' , group: @group %>
+      </section>
+    </aside>
+  </div>
+<% end %>
+</div>
 <div class="row">
   <div class="span8">
     <% if @group.microposts.any? %>

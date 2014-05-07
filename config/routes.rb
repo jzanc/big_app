@@ -2,6 +2,7 @@ BigApp::Application.routes.draw do
   get "groups/new"
   resources :groups
   resources :users
+  resources :microposts, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'
   match '/create_group', to: 'groups#new',      via: 'get'

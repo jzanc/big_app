@@ -17,7 +17,8 @@ namespace :db do
     users = User.all(limit: 6)
     50.times do
       content = Faker::Lorem.sentence(5)
-      users.each { group.microposts.create!(content: content, user: user) }
+      users.each { |user| group.microposts.create!(content: content, user: user)
+                          user.microposts.create!(content: content, group: group }
     end
   end
 end

@@ -11,7 +11,7 @@ describe "Group Pages" do
     it { should have_title(full_title('Create Group')) }
   end  
 
-  describe "create" do
+  describe "create group" do
     before { visit create_group_path }
     let(:submit) { "Create Group" }
 

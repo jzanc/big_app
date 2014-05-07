@@ -24,7 +24,7 @@ describe "Group Pages" do
     describe "with valid information" do
       before do
         fill_in "Name", with: "Example Group"
-        fill_in "Url" , with: "Example_Url"
+    
       end
 
       it "should create a group" do

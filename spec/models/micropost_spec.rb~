@@ -4,7 +4,8 @@ describe Micropost do
 
   let(:user) { FactoryGirl.create(:user) }
   let(:group) { FactoryGirl.create(:group) }
-  before { @micropost = group.microposts.build(content: "Lorem ipsum", group: group, user: user) }
+  before { @micropost = group.microposts.build(content: "Lorem ipsum", 
+                                               group: group, user: user) }
 
   subject { @micropost }
 

@@ -1,0 +1,4 @@
+class AddIndexToGroupsName < ActiveRecord::Migration
+  def change
+  end
+end

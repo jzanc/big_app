@@ -46,4 +46,24 @@ describe Group do
     before { @group.url = "a" * 21 }
     it { should_not be_valid }
   end
+
+  describe "when name is already taken" do
+    before do
+      group_with_same_name = @group.dup
+      group_with_same_name.url = "ArbitraryUrlValue"
+      group_with_same_name.save
+    end
+
+    it { should_not be_valid }
+  end
+
+  describe "when url is already taken" do
+    before do
+      group_with_same_url = @group.dup
+      group_with_same_url.name = "ArbitraryNameValue"
+      group_with_same_url.save
+    end
+
+    it { should_not be_valid }
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140507003424) do
+ActiveRecord::Schema.define(version: 20140507013109) do
 
   create_table "groups", force: true do |t|
     t.string   "name"
@@ -19,6 +19,9 @@ ActiveRecord::Schema.define(version: 20140507003424) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "groups", ["name"], name: "index_groups_on_name", unique: true
+  add_index "groups", ["url"], name: "index_groups_on_url", unique: true
 
   create_table "microposts", force: true do |t|
     t.string   "content"

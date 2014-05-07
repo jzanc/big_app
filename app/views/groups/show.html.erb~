@@ -1,2 +1,2 @@
-<% provide(:title, @group.name) %>
+<% provdie(:title, @group.name) %>
 <%= @group.name %>, <%= @group.url %>

@@ -10,5 +10,13 @@ describe "Group Pages" do
     it { should have_content('Create Group') }
     it { should have_title(full_title('Create Group')) }
   end  
+
+  describe "group page" do
+    let(:group) { FactoryGirl.create(:group) }
+    before { visit group_path(group) }
+
+    it { should have_content(group.name) }
+    it { should have_title(group.name) }
+  end
 end
 

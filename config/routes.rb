@@ -1,4 +1,5 @@
 BigApp::Application.routes.draw do
+  get "groups/new"
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   root  'static_pages#home'

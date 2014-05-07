@@ -1,4 +1,5 @@
 class Group < ActiveRecord::Base
+  has_many :microposts
   before_save { self.url = url.downcase }
   before_save { self.name = name.downcase }
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: {case_sensitive: false }

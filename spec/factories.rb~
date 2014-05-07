@@ -5,10 +5,15 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
   end
-end
-FactoryGirl.define do
+
   factory :group do
     name "Example Group"
     url "Example_Url"
+  end
+
+  factory :micropost do
+    content "Lorem ipsum"
+    user
+    group
   end
 end

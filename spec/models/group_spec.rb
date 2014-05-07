@@ -7,6 +7,7 @@ describe Group do
 
   it { should respond_to(:name) }
   it { should respond_to(:url) }
+  it { should respond_to(:microposts) }
   
 
   it { should be_valid }

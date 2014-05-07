@@ -6,7 +6,8 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     if @group.save
-
+      flash[:success] = "Thank you."
+      redirect_to @group
     else
       render 'new'
     end

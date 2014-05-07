@@ -19,7 +19,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
-    @micropost = Micropost.new(group: @group, user:@current_user, params[:micropost])
+    @micropost = current_user.microposts.build if signed_in?
+    @micropost.group = @group
     @microposts = @group.microposts.paginate(page: params[:page])
   end
 

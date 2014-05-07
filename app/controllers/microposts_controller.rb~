@@ -6,11 +6,19 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params) if signed_in?
+    @micropost.save
+      redirect_to root_url
+    
   end
 
   def destroy
   end
  
+  private
 
-
+    def micropost_params
+      params.require(:micropost).permit(:content)
+    end
 end
+
+

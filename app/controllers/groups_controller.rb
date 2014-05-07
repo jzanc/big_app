@@ -3,6 +3,10 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def index
+    @groups = Group.paginate(page: params[:page])
+  end
+
   def create
     @group = Group.new(group_params)
     if @group.save
@@ -15,6 +19,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @microposts = @group.microposts.paginate(page: params[:page])
   end
 
   private

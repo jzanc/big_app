@@ -3,10 +3,14 @@ class GroupsController < ApplicationController
     @group = Group.new
   end
 
+  def index
+    @group = Group.paginate(page: params[:page])
+  end
+
   def create
     @group = Group.new(group_params)
     if @group.save
-      flash[:success] = "Thank you."
+      flash[:success] = "Welcome to your new group!"
       redirect_to @group
     else
       render 'new'
@@ -15,6 +19,7 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @microposts = @group.microposts.paginate(page: params[:page])
   end
 
   private

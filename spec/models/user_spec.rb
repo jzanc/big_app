@@ -8,7 +8,7 @@ describe User do
     @group = Group.new(name: "Example Group", url: "example")
   end
 
-  subject { @user }
+  subject { @user}
 
 
   it { should respond_to(:name) }
@@ -21,6 +21,7 @@ describe User do
   it { should respond_to(:microposts) }
 
   it { should be_valid }
+
 
   describe "when name is not present" do
     before { @user.name = " " }
@@ -125,7 +126,8 @@ describe User do
   end
 
   describe "micropost associations" do
-    before{ @user.save }
+    before{ @user.save
+            @group.save }
     let!(:older_micropost) do
       FactoryGirl.create(:micropost, user: @user, group: @group, created_at: 1.day.ago)
     end
@@ -134,6 +136,15 @@ describe User do
     end
     it "should have the right microposts in the right order" do
       expect(@user.microposts.to_a).to eq [newer_micropost, older_micropost]
+    end
+
+    it "should destroy associated microposts" do
+      microposts = @user.microposts.to_a
+      @user.destroy
+      expect(microposts).not_to be_empty
+      microposts.each do |micropost|
+        expect(Micropost.where(id: micropost.id)).to be_empty
+      end
     end
   end
 end

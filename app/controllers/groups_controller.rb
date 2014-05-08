@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group
+  before_action :set_group, :only => [:show]
 
   def set_group
     Group.current = Group.find(params[:id])
@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
-    
+    Group.current = @group  
   end
 
   def index

@@ -13,9 +13,10 @@ class MicropostsController < ApplicationController
     
     @micropost = current_user.microposts.build(micropost_params) if signed_in?
     @micropost.group = Group.current
+    
     if @micropost.save
       flash[:success] = "Micropost created."
-      redirect_to root_url
+      redirect_to group_path(Group.current)
     else
       flash[:failure] = "Micropost not created."
       render 'static_pages/home'

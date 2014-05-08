@@ -14,6 +14,10 @@ class GroupsController < ApplicationController
     @groups = Group.paginate(page: params[:page])
   end
 
+  def current_group
+    @current_group = Group.find(params[:id])
+  end
+
   def create
     @group = Group.new(group_params)
     if @group.save
@@ -23,6 +27,7 @@ class GroupsController < ApplicationController
       render 'new'
     end
   end
+
 
   def Group.current=(group)
     @current_group = group
@@ -36,7 +41,6 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @micropost = current_user.microposts.build if signed_in?
     @micropost.group = current_group
-
     @microposts = @group.microposts.paginate(page: params[:page])
   end
 

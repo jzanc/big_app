@@ -1,2 +1,13 @@
 module GroupsHelper
+
+<<<<<<< HEAD
+  def set_group(group)
+    self.current_group = group
+  end
+=======
+  def current_group=(group)
+    @current_group = group
+  end 
+	
+>>>>>>> origin/master
 end

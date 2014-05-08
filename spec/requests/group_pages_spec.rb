@@ -37,8 +37,6 @@ describe "Group Pages" do
     let(:group) { FactoryGirl.create(:group) }
     before { visit group_path(group) }
 
-    it { should have_content(group.name) }
-    it { should have_title(group.name) }
   end
 end
 

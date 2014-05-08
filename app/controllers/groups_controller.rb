@@ -40,7 +40,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @micropost = current_user.microposts.build if signed_in?
-    @micropost.group = current_group
+    /@micropost.group = current_group/
     @microposts = @group.microposts.paginate(page: params[:page])
   end
 

@@ -23,7 +23,7 @@ describe "Group Pages" do
 
     describe "with valid information" do
       before do
-        fill_in "Name", with: "Example Group"
+        fill_in "Name", with: "Example2 Wisc Group"
     
       end
 

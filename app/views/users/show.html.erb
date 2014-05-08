@@ -7,9 +7,7 @@
         <%= @user.name %>
       </h1>
     </section>
-    <section>
-      <%= link_to "Create New Group", create_group_path, class: "btn btn-large btn-primary" %>
-    </section>  
+     
   </aside>
    <div class="span8">
     <% if @user.microposts.any? %>
@@ -18,6 +16,9 @@
         <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts %>
+    <% end %>
+    <% if not @user.microposts.any? %>
+      <h3>This user has not posted any posts yet<h3>
     <% end %>
   </div>
 </div>

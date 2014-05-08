@@ -1,5 +1,6 @@
 class Group < ActiveRecord::Base
   has_many :microposts
+  has_many :users, through: :microposts
   before_save { self.url = self.name }
   before_save { self.url = url.downcase }
   before_save { self.url = url.gsub(/^(\w+\-\_)/,"") }

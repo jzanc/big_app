@@ -1,6 +1,13 @@
 class GroupsController < ApplicationController
+  before_action :set_group
+
+  def set_group
+    Group.current = Group.find(params[:id])
+  end
+
   def new
     @group = Group.new
+    
   end
 
   def index
@@ -17,9 +24,19 @@ class GroupsController < ApplicationController
     end
   end
 
+  def Group.current=(group)
+    @current_group = group
+  end
+
+  def Group.current
+    @current_group
+  end
+
   def show
     @group = Group.find(params[:id])
-    @micropost = Micropost.new(group: @group, params[:micropost])
+    @micropost = current_user.microposts.build if signed_in?
+    @micropost.group = current_group
+
     @microposts = @group.microposts.paginate(page: params[:page])
   end
 
